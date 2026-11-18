@@ -3,157 +3,221 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Mappatura Nebrodi</title>
+<title>Mappatura Nebrodi · Re-Castanea</title>
 <meta name="description" content="Mappatura delle realtà produttive e culturali nei 24 comuni del Parco dei Nebrodi">
+<meta name="theme-color" content="#21170f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: registro di campo — testata compatta, schede per macro-categoria, legenda colori cliccabile, tabella a tutta larghezza */
+/* Identità Re-Castanea: marrone castagna, crema, giallo paglia, ruggine e bordeaux.
+   Raleway per titoli e numeri, Inter per testi e dati. Tema chiaro con testata scura, come la presentazione. */
 :root{
-  --bg:#f3f4ef; --surface:#ffffff; --fg:#22241e; --muted:#6a6e62; --line:#d9dbd1;
-  --accent:#7a3e1d; --accent-soft:#f1e3d8;
-  --f-display:"Young Serif", Georgia, "Times New Roman", serif;
-  --f-body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-data:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-  /* una tinta per macro-categoria */
-  --m1:#b4561e; --m2:#3f5e8c; --m3:#4c6a3a; --m4:#2e7d78; --m5:#6b6b6b; --m6:#8e4a79;
-  --m7:#8a4b2a; --m8:#5b7b2e; --m9:#a0522d; --m10:#2f4f75; --m11:#6b3e7a;
+  --castagna:#21170f; --crema:#fffdf0; --paglia:#ebe49c; --ruggine:#823e29; --bordeaux:#622420;
+  --beige:#f3efe7; --taupe:#c8bfad; --ink:#231f20; --grigio:#6b6765; --filo:#e3ded6;
+  --bg:#ffffff; --surface:#ffffff; --fg:var(--ink); --muted:var(--grigio); --line:var(--filo);
+  --accent:var(--bordeaux); --accent-soft:var(--beige);
+  --f-display:"Raleway", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data:"Inter", system-ui, sans-serif;
+  /* una sola tinta per tutte le schede: il colore non serve a distinguere le categorie */
+  --m1:var(--bordeaux); --m2:var(--bordeaux); --m3:var(--bordeaux); --m4:var(--bordeaux); --m5:var(--bordeaux); --m6:var(--bordeaux);
+  --m7:var(--bordeaux); --m8:var(--bordeaux); --m9:var(--bordeaux); --m10:var(--bordeaux); --m11:var(--bordeaux);
+  --gutter:clamp(16px,4vw,56px);
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#161712; --surface:#1e2019; --fg:#e7e8df; --muted:#9a9e90; --line:#33362c;
-  --accent:#d98b5c; --accent-soft:#3a271c;
-  --m1:#e08a52; --m2:#86a6d6; --m3:#93b77c; --m4:#6cc2bb; --m5:#b0b0b0; --m6:#cf8dbb;
-  --m7:#cf8f68; --m8:#a6c46e; --m9:#de8d64; --m10:#7fa2cf; --m11:#b48ac4; color-scheme:dark }}
-:root[data-theme="dark"]{
-  --bg:#161712; --surface:#1e2019; --fg:#e7e8df; --muted:#9a9e90; --line:#33362c;
-  --accent:#d98b5c; --accent-soft:#3a271c;
-  --m1:#e08a52; --m2:#86a6d6; --m3:#93b77c; --m4:#6cc2bb; --m5:#b0b0b0; --m6:#cf8dbb;
-  --m7:#cf8f68; --m8:#a6c46e; --m9:#de8d64; --m10:#7fa2cf; --m11:#b48ac4; color-scheme:dark }
-
 *{box-sizing:border-box}
-html{color-scheme:light}
-:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.45;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
-.wrap{max-width:1500px;margin:0 auto;display:grid;gap:16px;min-width:0}
-header{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-end;justify-content:space-between}
-h1{font-family:var(--f-display);font-weight:400;font-size:clamp(26px,4vw,36px);margin:0;line-height:1.1;text-wrap:balance}
-.sub{color:var(--muted);margin:4px 0 0;max-width:62ch}
-.stats{display:flex;gap:22px;flex-wrap:wrap}
-.stat b{display:block;font-family:var(--f-data);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums}
-.stat span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.5;
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--bordeaux);text-underline-offset:2px}
+a:hover{color:var(--ruggine)}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--ruggine);outline-offset:2px}
 
-.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:thin}
-.tab{appearance:none;border:0;background:none;font:inherit;font-weight:600;padding:10px 12px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap;display:flex;align-items:center;gap:7px}
-.tab .dot{width:9px;height:9px;border-radius:50%;background:var(--h)}
-.tab .n{font-family:var(--f-data);font-weight:400;font-size:12px;color:var(--muted)}
-.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--h)}
-.tab:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* ---------- testata scura ---------- */
+.cover{background:var(--castagna);color:var(--crema);
+  padding:calc(env(safe-area-inset-top,0px) + 28px) max(var(--gutter),env(safe-area-inset-right,0px)) 40px max(var(--gutter),env(safe-area-inset-left,0px))}
+.cover-in{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px 64px;align-items:end}
+.kicker{font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--paglia);margin:0 0 28px}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(40px,6.4vw,88px);line-height:1;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.sub{font-family:var(--f-display);font-weight:300;font-size:clamp(18px,2vw,26px);line-height:1.3;color:var(--taupe);margin:14px 0 0;max-width:34ch;text-wrap:pretty}
+.rule{width:72px;height:2px;background:var(--ruggine);margin:28px 0 18px;border:0}
+.source{margin:0;font-size:13px;color:var(--taupe);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
+.source .live{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--paglia)}
+.source .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--paglia)}
+.source .off{color:var(--taupe)}
+.source .off::before{background:var(--taupe)}
+.source a{color:var(--crema)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px;border-left:2px solid var(--ruggine);padding-left:32px}
+.stat b{display:block;font-family:var(--f-display);font-weight:200;font-size:clamp(40px,4.6vw,64px);line-height:1;color:var(--paglia);font-variant-numeric:lining-nums tabular-nums}
+.stat span{display:block;margin-top:8px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe)}
 
-.head2{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
-.head2 h2{font-family:var(--f-display);font-weight:400;font-size:22px;margin:0;color:var(--h)}
-.head2 .num{font-family:var(--f-data);color:var(--muted);font-size:13px}
+/* ---------- corpo ---------- */
+.wrap{max-width:1440px;margin:0 auto;padding:0 max(var(--gutter),env(safe-area-inset-right,0px)) 0 max(var(--gutter),env(safe-area-inset-left,0px));display:grid;gap:22px;min-width:0}
+.running{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 0 0;font-family:var(--f-display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.running b{font-weight:700}
+.banner{font-size:13px;padding:12px 16px;border-radius:12px;background:var(--beige);color:var(--bordeaux);border-left:3px solid var(--ruggine)}
 
-.legend{display:flex;flex-wrap:wrap;gap:6px}
-.lg{font:inherit;font-size:12.5px;border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:4px 10px 4px 8px;cursor:pointer;display:flex;align-items:center;gap:8px;
-  background:color-mix(in srgb,var(--h) var(--p),var(--surface))}
-.lg i{width:12px;height:12px;border-radius:3px;background:color-mix(in srgb,var(--h) calc(var(--p) + 30%),var(--surface));border:1px solid color-mix(in srgb,var(--h) 50%,transparent)}
-.lg b{font-family:var(--f-data);font-weight:500;color:var(--muted)}
-.lg[aria-pressed="true"]{border-color:var(--h);box-shadow:inset 0 0 0 1px var(--h)}
-.legend.filtering .lg[aria-pressed="false"]{opacity:.5}
+.tabs{display:flex;gap:4px 26px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin-top:6px;
+  mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{appearance:none;border:0;background:none;font-family:var(--f-display);font-size:15px;font-weight:500;color:var(--grigio);padding:12px 0 14px;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;display:flex;align-items:baseline;gap:8px;transition:color .15s}
+.tab:last-child{margin-right:40px}
+.tab .dot{display:none}
+.tab .no{font-weight:700;font-size:13px;color:inherit;font-variant-numeric:tabular-nums}
+.tab .n{font-family:var(--f-body);font-size:11.5px;color:var(--taupe);font-variant-numeric:tabular-nums}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ruggine)}
+.tab[aria-selected="true"] .no{color:var(--bordeaux)}
 
-.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.bar input,.bar select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--fg);min-width:0}
-.bar input{flex:1 1 220px}
-.bar select{flex:0 1 220px}
-.btn{font:inherit;font-weight:600;padding:8px 14px;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
-.btn.ghost{background:transparent;color:var(--accent)}
-.count{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.head2{display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px 22px;margin-top:18px}
+.head2 .mno{font-family:var(--f-display);font-weight:200;font-size:clamp(56px,7vw,96px);line-height:.8;color:var(--bordeaux);font-variant-numeric:lining-nums}
+.head2 h2{font-family:var(--f-body);font-weight:700;font-size:clamp(24px,2.8vw,38px);line-height:1.1;letter-spacing:-.01em;margin:0;color:var(--ink);max-width:24ch;text-wrap:balance}
+.head2 .num{font-family:var(--f-display);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--grigio);padding-bottom:4px}
+
+.panel{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;background:var(--beige);border-radius:20px;padding:22px 24px}
+.lbl{font-family:var(--f-display);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grigio);margin:0 0 10px}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.lg{font:inherit;font-size:13px;border:1px solid transparent;color:var(--ink);background:var(--surface);border-radius:999px;padding:6px 8px 6px 14px;cursor:pointer;
+  display:flex;align-items:center;gap:10px;transition:background .15s,color .15s}
+.lg i{display:none}
+.lg b{font-weight:600;font-size:11.5px;color:var(--bordeaux);background:var(--beige);border-radius:999px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.lg:hover{border-color:var(--taupe)}
+.lg[aria-pressed="true"]{background:var(--bordeaux);color:var(--crema)}
+.lg[aria-pressed="true"] b{background:rgba(255,253,240,.16);color:var(--crema)}
+.legend.filtering .lg[aria-pressed="false"]{opacity:.55}
 
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:3px 10px;cursor:pointer}
-.chip b{font-family:var(--f-data);font-weight:500;margin-left:4px;color:var(--muted)}
-.chip[aria-pressed="true"]{background:color-mix(in srgb,var(--h) 18%,var(--surface));border-color:var(--h)}
-.chip.zero{opacity:.5}
+.chip{font:inherit;font-size:12.5px;border:1px solid var(--taupe);background:transparent;color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer;transition:background .15s}
+.chip b{font-weight:500;margin-left:6px;color:var(--grigio);font-variant-numeric:tabular-nums}
+.chip:hover{background:var(--surface)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--crema)}
+.chip[aria-pressed="true"] b{color:var(--taupe)}
+.chip.zero{opacity:.4}
 
-.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;min-width:1180px}
-th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
-th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--surface);font-weight:600;position:sticky;top:0;background:var(--h);z-index:1;white-space:nowrap}
-th.ed{background:var(--accent)}
-th.ed::after{content:" ✎"}
-tbody td{background:color-mix(in srgb,var(--h) var(--p),var(--surface))}
-tbody td:first-child{box-shadow:inset 4px 0 0 color-mix(in srgb,var(--h) calc(var(--p) + 45%),var(--surface))}
-.name{font-weight:600}
-.addr,.dsc{color:var(--muted);font-size:12.5px}
-.dsc{margin-top:3px;max-width:44ch}
-.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:4px;background:color-mix(in srgb,var(--h) 22%,var(--surface));color:var(--fg);font-weight:600}
-.pg{font-size:12px;color:var(--muted)}
-.tel{font-family:var(--f-data);font-size:12.5px;white-space:nowrap;display:block}
-a{color:var(--accent)}
-.links a{font-size:12.5px;display:inline-block;margin-right:8px}
-td.e{min-width:170px}
-td.e textarea{width:100%;min-height:52px;resize:vertical;font:inherit;font-size:13px;border:1px dashed color-mix(in srgb,var(--accent) 45%,transparent);background:color-mix(in srgb,var(--surface) 70%,transparent);color:var(--fg);padding:4px;border-radius:4px}
-td.e textarea:focus{border:1px solid var(--accent);background:var(--surface)}
-td.e select{font:inherit;font-size:13px;border:1px dashed color-mix(in srgb,var(--accent) 45%,transparent);background:var(--surface);color:var(--fg);border-radius:4px;padding:4px}
-.saved{font-size:11px;color:var(--muted);height:14px}
-.empty{padding:40px 20px;text-align:center;color:var(--muted);background:var(--surface)}
-.empty h3{font-family:var(--f-display);font-weight:400;color:var(--fg);font-size:20px;margin:0 0 6px}
-.note{font-size:12.5px;color:var(--muted)}
-[hidden]{display:none!important}
-.source{margin:8px 0 0;font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
-.source .live{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--fg)}
-.source .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--m3)}
-.source .off::before{background:var(--muted)}
-.banner{font-size:13px;padding:8px 12px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bar input,.bar select{font:inherit;font-size:14px;padding:10px 14px;border:1px solid var(--taupe);border-radius:12px;background:var(--surface);color:var(--ink);min-width:0}
+.bar input{flex:1 1 260px}
+.bar select{flex:0 1 220px}
+.bar input::placeholder{color:var(--grigio)}
+.btn{font:inherit;font-size:13.5px;font-weight:600;padding:10px 16px;border-radius:12px;border:1px solid var(--bordeaux);background:var(--bordeaux);color:var(--crema);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:background .15s}
+.btn:hover{background:var(--ruggine);border-color:var(--ruggine);color:var(--crema)}
+.btn.ghost{background:transparent;color:var(--bordeaux);border-color:transparent;padding-inline:10px}
+.btn.ghost:hover{background:var(--surface);color:var(--ruggine)}
+.tools{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;justify-content:space-between}
+.tools .group{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.count{font-family:var(--f-display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grigio);font-variant-numeric:tabular-nums}
+
+.tablebox{overflow-x:auto;border-radius:16px;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:1180px}
+th,td{text-align:left;vertical-align:top;padding:14px 14px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-display);font-size:13px;font-weight:500;color:var(--crema);background:var(--bordeaux);position:sticky;top:0;z-index:1;white-space:nowrap;letter-spacing:.01em}
+th.ed{background:var(--ruggine)}
+th.ed::after{content:" ✎";opacity:.7}
+tbody td{background:var(--surface)}
+tbody tr:hover td{background:#fbf8f2}
+tbody tr:last-child td{border-bottom:0}
+.name{font-weight:600;color:var(--ink)}
+.addr,.dsc{color:var(--grigio);font-size:12.5px}
+.dsc{margin-top:4px;max-width:44ch}
+.tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:8px;background:var(--beige);color:var(--bordeaux);font-weight:600;line-height:1.35}
+.pg{font-size:12px;color:var(--grigio)}
+.tel{font-size:12.5px;white-space:nowrap;display:block;font-variant-numeric:tabular-nums}
+.links a{font-size:12.5px;font-weight:600;display:inline-block;margin-right:10px}
+td.e{min-width:180px}
+tbody td:first-child{min-width:240px}
+tbody td:nth-child(2){min-width:130px}
+tbody td:nth-child(3){min-width:170px}
+tbody td:nth-child(n+5):not(.e){min-width:150px}
+td.e textarea{width:100%;min-height:56px;resize:vertical;font:inherit;font-size:13px;border:1px solid var(--line);background:var(--beige);color:var(--ink);padding:8px 10px;border-radius:10px}
+td.e textarea:focus{border-color:var(--ruggine);background:var(--surface);outline:none}
+td.e select{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--beige);color:var(--ink);border-radius:10px;padding:6px 8px}
+.saved{font-size:11px;color:var(--grigio);min-height:14px;margin-top:2px}
+.empty{padding:56px 20px;text-align:center;color:var(--grigio)}
+.empty h3{font-family:var(--f-display);font-weight:500;color:var(--ink);font-size:22px;margin:0 0 6px}
+.note{font-size:12.5px;color:var(--grigio);max-width:90ch}
+
+footer{margin-top:40px;border-top:1px solid var(--line);padding:22px max(var(--gutter),env(safe-area-inset-right,0px)) 32px max(var(--gutter),env(safe-area-inset-left,0px))}
+.foot-in{max-width:1440px;margin:0 auto;display:grid;gap:14px}
+.colophon{font-size:12.5px;color:var(--ink);text-align:center}
+
+@media (max-width:860px){
+  .cover-in{grid-template-columns:minmax(0,1fr)}
+  .stats{border-left:0;padding-left:0;border-top:2px solid var(--ruggine);padding-top:22px}
+  .panel{padding:18px;border-radius:16px}
+}
+@media (max-width:480px){
+  .kicker{margin-bottom:18px}
+  .stats{gap:18px 20px}
+  .running span:last-child{display:none}
+  .bar select{flex:1 1 100%}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap" id="wrap">
-  <header>
+<header class="cover">
+  <div class="cover-in">
     <div>
+      <p class="kicker">Re-Castanea · Ricerca · Mappatura</p>
       <h1>Mappatura Nebrodi</h1>
-      <p class="sub" id="sub">Realtà produttive e culturali nei 24 comuni del Parco dei Nebrodi, una scheda per macro-categoria.</p>
+      <p class="sub" id="sub">Realtà produttive e risorse culturali nei 24 comuni del Parco dei Nebrodi.</p>
+      <hr class="rule">
       <p class="source" id="source"></p>
     </div>
     <div class="stats" id="stats"></div>
-  </header>
+  </div>
+</header>
+
+<main class="wrap" id="wrap">
+  <div class="running"><span id="crumb"><b>01</b> | Mappatura — Alimentare</span><span><b>Re-Castanea:</b> il castagno dei Nebrodi</span></div>
 
   <div id="banner" class="banner" hidden></div>
 
-  <div class="tabs" role="tablist" id="tabs" aria-label="Macro-categorie"></div>
+  <nav class="tabs" role="tablist" id="tabs" aria-label="Macro-categorie"></nav>
 
-  <div class="head2"><h2 id="mtitle"></h2><span class="num" id="mnum"></span></div>
+  <div class="head2"><span class="mno" id="mno" aria-hidden="true">01</span><h2 id="mtitle"></h2><span class="num" id="mnum"></span></div>
 
-  <div>
-    <div class="note" style="margin-bottom:6px">Categorie (tocca per filtrare)</div>
-    <div class="legend" id="legend"></div>
+  <section class="panel" aria-label="Filtri">
+    <div>
+      <p class="lbl">Categorie</p>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div>
+      <p class="lbl">Comuni</p>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="bar">
+      <input id="q" type="search" placeholder="Cerca per nome, via o descrizione" aria-label="Cerca">
+      <select id="f-disp" aria-label="Disponibilità"></select>
+      <button class="btn ghost" id="reset" type="button">Azzera filtri</button>
+    </div>
+  </section>
+
+  <div class="tools">
+    <div class="count" id="count"></div>
+    <div class="group">
+      <button class="btn ghost" id="exportjson" type="button">Esporta JSON</button>
+      <button class="btn ghost" id="import" type="button" title="JSON esportato da questa pagina, CSV della pagina, CSV di una scheda del Google Fogli o CSV delle risposte del modulo">Importa dati</button>
+      <input id="importfile" type="file" accept=".json,.csv,application/json,text/csv" multiple hidden>
+      <button class="btn ghost" id="resetedits" type="button">Ripristina dati originali</button>
+      <a class="btn ghost" href="download/mappatura_nebrodi.xlsx">Excel completo</a>
+      <button class="btn" id="export" type="button">Scarica CSV</button>
+    </div>
   </div>
 
-  <div class="bar">
-    <input id="q" type="search" placeholder="Cerca nome, via, descrizione…" aria-label="Cerca">
-    <select id="f-disp" aria-label="Disponibilità"></select>
-    <button class="btn ghost" id="reset" type="button">Azzera filtri</button>
-    <button class="btn" id="export" type="button">Scarica CSV</button>
-    <button class="btn ghost" id="exportjson" type="button">Esporta dati (JSON)</button>
-    <button class="btn ghost" id="import" type="button" title="JSON esportato da questa pagina, CSV della pagina, CSV di una scheda del Google Fogli o CSV delle risposte del modulo">Importa dati</button>
-    <input id="importfile" type="file" accept=".json,.csv,application/json,text/csv" multiple hidden>
-    <button class="btn ghost" id="resetedits" type="button">Ripristina dati originali</button>
-    <a class="btn ghost" href="download/mappatura_nebrodi.xlsx" style="text-decoration:none">Excel completo</a>
-  </div>
-
-  <div>
-    <div class="note" style="margin-bottom:6px">Comuni</div>
-    <div class="chips" id="chips"></div>
-  </div>
-
-  <div class="count" id="count"></div>
   <div class="tablebox"><table id="tbl"><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
-  <p class="note">Fonti: realtà produttive da Pagine Gialle (ricerche per sottocategoria su ciascun comune, solo sedi nei 24 comuni); risorse culturali dal sito del Parco dei Nebrodi e da ricerche web, con il link alla fonte in ogni riga. Contatti e date da verificare prima di scrivere o chiamare.</p>
-</div>
+</main>
 
+<footer>
+  <div class="foot-in">
+    <p class="note">Fonti: realtà produttive da Pagine Gialle (ricerche per sottocategoria su ciascun comune) e dalle schede dei colleghi; risorse culturali dal sito del Parco dei Nebrodi e da ricerche web, con il link alla fonte in ogni riga. Contatti e date da verificare prima di scrivere o chiamare.</p>
+    <p class="colophon">Laboratorio di Design Sostenibile e Circolare per l'Agroalimentare · DARCH · Università degli Studi di Palermo · A.A. 2026/2027</p>
+  </div>
+</footer>
 <script>
 const COMUNI=["Acquedolci","Alcara li Fusi","Capizzi","Caronia","Cesarò","Floresta","Galati Mamertino","Longi","Militello Rosmarino","Mistretta","Raccuja","Sant'Agata di Militello","Santa Domenica Vittoria","San Fratello","San Marco d'Alunzio","Santo Stefano di Camastra","San Teodoro","Tortorici","Ucria","Bronte","Maniace","Randazzo","Cerami","Troina"];
 const MACRO={"1":["Alimentare","Trasformazione alimentare e gastronomia"],"2":["Bevande","Birrifici, distillerie e bevande"],"3":["Legno","Lavorazione del legno e falegnameria"],"4":["Tessile e fibre","Laboratori tessili e artigianato delle fibre"],"5":["Materiali","Produzione di materiali e biomateriali"],"6":["Cosmesi","Cosmesi, erboristeria e prodotti naturali"],"7":["Artigianato artistico","Artigianato e lavorazioni artistiche"],"8":["Agricoltura e foreste","Agricoltura, vivaismo e gestione forestale"],"9":["Energia e scarti","Energia e valorizzazione degli scarti"],"10":["Ricerca e supporto","Ricerca, innovazione e supporto tecnico"],"11":["Risorse culturali","Risorse culturali, storiche, paesaggistiche e identitarie"]};
@@ -199,7 +263,7 @@ function setHue(){ $("wrap").style.setProperty("--h",`var(--m${state.m})`); }
 
 function renderTabs(){
   const loaded=state.loaded.produttive&&state.loaded.culturali;
-  $("tabs").innerHTML=Object.keys(MACRO).map(m=>`<button class="tab" role="tab" type="button" aria-selected="${m===state.m}" data-m="${m}" style="--h:var(--m${m})"><span class="dot"></span>${m}. ${esc(MACRO[m][0])}<span class="n">${loaded?tabRows(m).length:"–"}</span></button>`).join("");
+  $("tabs").innerHTML=Object.keys(MACRO).map(m=>`<button class="tab" role="tab" type="button" aria-selected="${m===state.m}" data-m="${m}" style="--h:var(--m${m})"><span class="no">${m.padStart(2,"0")}</span>${esc(MACRO[m][0])}<span class="n">${loaded?tabRows(m).length:"–"}</span></button>`).join("");
 }
 
 function renderLegend(){
@@ -247,7 +311,8 @@ function renderTable(){
 
 function render(){
   setHue();
-  $("mtitle").textContent=`${state.m}. ${MACRO[state.m][1]}`;
+  $("mtitle").textContent=MACRO[state.m][1]; $("mno").textContent=state.m.padStart(2,"0");
+  $("crumb").innerHTML=`<b>${state.m.padStart(2,"0")}</b> | Mappatura — ${esc(MACRO[state.m][0])}`;
   $("mnum").textContent=state.loaded[coll()]?`${tabRows().length} schede`:"";
   $("f-disp").innerHTML=`<option value="">Ogni disponibilità</option>`+DISP.map(d=>`<option ${d===state.disp?"selected":""}>${d}</option>`).join("");
   $("f-disp").hidden=state.m==="11";
@@ -468,7 +533,7 @@ async function importFiles(files){
   try{ localStorage.setItem(LSI,JSON.stringify(imported)); localStorage.setItem(LS,JSON.stringify(edits)); }catch(_){}
   const b=$("banner"); b.hidden=false; b.dataset.confirm="";
   b.textContent=`Importazione completata: ${stats.add} nuove schede, ${stats.upd} aggiornate`+(stats.skip?`, ${stats.skip} righe saltate (senza nome o area)`:"")+
-    (bad.length?`. File non riconosciuti: ${bad.join(", ")}`:"")+". Per renderle definitive premi «Esporta dati (JSON)» e carica i file nella cartella data/ del repository.";
+    (bad.length?`. File non riconosciuti: ${bad.join(", ")}`:"")+". Per renderle definitive premi «Esporta JSON» e carica i file nella cartella data/ del repository.";
   render();
 }
 $("import").addEventListener("click",()=>$("importfile").click());
@@ -521,7 +586,7 @@ function showSource(live,when){
   const hm=when?when.toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"}):"";
   $("source").innerHTML=live
     ?`<span class="live">Dati in diretta dal Google Fogli</span><span>letti alle ${hm}</span>${state.missing&&state.missing.length?`<span>(${state.missing.length>1?"schede":"scheda"} ${state.missing.join(", ")} dalla copia del repository: Google non ha risposto)</span>`:""}<a href="${SHEET_EDIT}" target="_blank" rel="noopener">Modifica nel foglio</a><span>(serve l'accesso; le modifiche compaiono qui dopo qualche minuto)</span>`
-    :`<span class="live off">Copia salvata nel repository</span><span>Le colonne con la matita si compilano qui: le modifiche restano nel tuo browser e si esportano con «Esporta dati (JSON)».</span>`;
+    :`<span class="live off">Copia salvata nel repository</span><span>Le colonne con la matita si compilano qui: le modifiche restano nel tuo browser e si esportano con «Esporta JSON».</span>`;
 }
 
 async function load(){
